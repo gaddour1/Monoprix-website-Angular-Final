@@ -1,0 +1,88 @@
+<div class="wrapper">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-wrapper">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="https://www.monoprix.fr" class="simple-text">
+                    <div class="logo-img">
+                        <img src="assets/img/monoprix-logo.png" alt="Monoprix Logo" style="height: 50px; width: 200px;" />
+                    </div>
+                </a>
+            </div>
+
+            <!-- Recherche -->
+            <div class="search">
+                <form class="navbar-form">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Rechercher...">
+                        <button type="submit" class="btn btn-white">
+                            <i class="material-icons">search</i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Navigation -->
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/financial">
+                            <i class="material-icons">dashboard</i>
+                            <p>Financial</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/overview">
+                            <i class="material-icons">assessment</i>
+                            <p>Overview</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/supplier-financial">
+                            <i class="material-icons">business</i>
+                            <p>Supplier Financial</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="dashboard-header">
+            <div class="header-content">
+                <div class="header-title">
+                    <h1>Overview</h1>
+                    <p class="subtitle">Tableau de bord général</p>
+                    
+                    <div class="financial-indicators">
+                        <div class="indicator up">
+                            <div class="indicator-icon">
+                                <i class="material-icons">trending_up</i>
+                            </div>
+                            <span class="indicator-value">+12.5%</span>
+                            <p>Chiffre d'affaires</p>
+                        </div>
+                        <div class="indicator down">
+                            <div class="indicator-icon">
+                                <i class="material-icons">trending_down</i>
+                            </div>
+                            <span class="indicator-value">-3.2%</span>
+                            <p>Coûts</p>
+                        </div>
+                        <div class="indicator">
+                            <div class="indicator-icon">
+                                <i class="material-icons">trending_flat</i>
+                            </div>
+                            <span class="indicator-value">0%</span>
+                            <p>Performance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

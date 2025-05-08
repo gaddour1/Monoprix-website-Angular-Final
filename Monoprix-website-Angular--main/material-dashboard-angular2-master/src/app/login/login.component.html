@@ -1,0 +1,70 @@
+<style>
+  .login-content {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .login-card-wide {
+    width: 600px;
+    max-width: 90%;
+  }
+</style>
+
+<div class="login-container">
+  <div class="login-content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-12 d-flex justify-content-center">
+          <div class="card border-0 shadow-sm rounded-lg login-card-wide">
+            <div class="card-body p-5">
+              <div class="text-center mb-4">
+                <h1 class="h3 mb-3 font-weight-normal">Bienvenue sur Monoprix Finance</h1>
+                <p class="text-muted">Gérez vos dépenses en toute simplicité</p>
+              </div>
+
+              <form class="needs-validation" [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+                <div class="form-group mb-4">
+                  <label for="email" class="form-label">Email</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0">
+                      <i class="fas fa-envelope"></i>
+                    </span>
+                    <input type="email" class="form-control border-start-0" id="email" formControlName="email" required>
+                    <div class="invalid-feedback">
+                      <div *ngIf="loginForm.get('email')?.errors?.['required']">L'email est requis</div>
+                      <div *ngIf="loginForm.get('email')?.errors?.['email']">Veuillez entrer un email valide</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group mb-4">
+                  <label for="password" class="form-label">Mot de passe</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0">
+                      <i class="fas fa-lock"></i>
+                    </span>
+                    <input type="password" class="form-control border-start-0" id="password" formControlName="password" required>
+                    <div class="invalid-feedback">
+                      <div *ngIf="loginForm.get('password')?.errors?.['required']">Le mot de passe est requis</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-check mb-4">
+                  <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                  <label class="form-check-label" for="remember">Se souvenir de moi</label>
+                </div>
+
+                <button class="btn btn-primary btn-lg btn-block w-100" type="submit" [disabled]="!loginForm.valid">
+                  Se connecter
+                </button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
