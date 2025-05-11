@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { animate, style, transition, trigger } from '@angular/animations';
 
-// Permet d'utiliser jQuery
 declare var $: any;
 
 @Component({
@@ -59,26 +58,58 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
 
+      // Vérifier les comptes prédéfinis
       if (email === 'daf@daf.tn' && password === 'daf123') {
+        localStorage.setItem('role', 'DAF');
         this.router.navigate(['/financial']);
-      } else if (email === 'supplier' && password === 'supplier123') {
-        this.router.navigate(['/SupplierFinancial']);
-      } else if (email && password) {
-        this.router.navigate(['/dashboard']);
-      }
-
-      if (this.rememberMe) {
-        localStorage.setItem('rememberMe', 'true');
-        localStorage.setItem('email', email);
-        localStorage.setItem('password', password);
+      } else if (email === 'supplier@supplier.tn' && password === 'supplier123') {
+        localStorage.setItem('role', 'SUPPLIER');
+        this.router.navigate(['/financial']);
+      } else if (email === 'risk@risk.tn' && password === 'risk123') {
+        localStorage.setItem('role', 'DEFAULT');
+        this.router.navigate(['/financial']);
       } else {
-        localStorage.removeItem('rememberMe');
-        localStorage.removeItem('email');
-        localStorage.removeItem('password');
+        // Vérifier les comptes enregistrés dans localStorage
+        let found = false;
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key && key.startsWith('email_')) {
+            const storedEmail = localStorage.getItem(key);
+            const userId = key.split('_')[1]; // Récupérer l'identifiant unique
+            const storedPassword = localStorage.getItem(`password_${userId}`);
+            const storedRole = localStorage.getItem(`role_${userId}`);
+
+            if (storedEmail === email && storedPassword === password) {
+              localStorage.setItem('role', storedRole || 'DEFAULT');
+              this.router.navigate(['/financial']);
+              found = true;
+
+              // Gérer "Se souvenir de moi"
+              if (this.rememberMe) {
+                localStorage.setItem('rememberMe', 'true');
+                localStorage.setItem('email', email);
+                localStorage.setItem('password', password);
+              } else {
+                localStorage.removeItem('rememberMe');
+                localStorage.removeItem('email');
+                localStorage.removeItem('password');
+              }
+              break;
+            }
+          }
+        }
+
+        if (!found) {
+          alert('Email ou mot de passe incorrect');
+        }
       }
     } else {
       alert('Veuillez remplir tous les champs');
     }
+  }
+
+  goToRegister(): void {
+    this.router.navigate(['/register']);
   }
 
   get email() {

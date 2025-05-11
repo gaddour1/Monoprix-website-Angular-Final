@@ -1,41 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 
-declare const $: any;
-declare interface RouteInfo {
-    path: string;
-    title: string;
-    icon: string;
-    class: string;
-}
-export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
-    { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },
-    { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },
-    { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
-    { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },
-    { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
-    { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
-    { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
-];
-
 @Component({
   selector: 'app-financial',
   templateUrl: './financial.component.html',
   styleUrls: ['./financial.component.scss']
 })
 export class FinancialComponent implements OnInit {
+  role: string = '';
+  dashboardUrl: string = '';
 
-    menuItems: any[];
-  
-    constructor() { }
-  
-    ngOnInit() {
-      this.menuItems = ROUTES.filter(menuItem => menuItem);
+  constructor() {}
+
+  ngOnInit() {
+    this.role = localStorage.getItem('role') || 'DEFAULT';
+
+    switch (this.role) {
+      case 'DAF':
+        this.dashboardUrl = 'https://app.powerbi.com/reportEmbed?reportId=1ea2b908-535e-4d3e-9751-a79c5a75c6ed&autoAuth=true&ctid=604f1a96-cbe8-43f8-abbf-f8eaf5d85730';
+        break;
+      case 'SUPPLIER':
+        this.dashboardUrl = 'https://app.powerbi.com/reportEmbed?reportId=1e4b9664-f491-4bdb-bec5-ace9a8eafe88&autoAuth=true&ctid=604f1a96-cbe8-43f8-abbf-f8eaf5d85730';
+        break;
+      case 'DEFAULT':
+      default:
+        this.dashboardUrl = 'https://app.powerbi.com/reportEmbed?reportId=41d0dbbf-9f83-474c-bfe3-463813761482&autoAuth=true&ctid=604f1a96-cbe8-43f8-abbf-f8eaf5d85730';
+        break;
     }
-    isMobileMenu() {
-        if ($(window).width() > 991) {
-            return false;
-        }
-        return true;
-    };
+  }
+
+  isMobileMenu() {
+    return window.innerWidth <= 991;
+  }
 }
