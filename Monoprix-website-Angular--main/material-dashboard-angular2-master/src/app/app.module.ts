@@ -10,8 +10,13 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './login/login.component';
 import { FinancialComponent } from './financial/financial.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { SupplierFinancialComponent } from './supplier-financial/supplier-financial.component';
 import { HomeComponent } from './home/home.component';
+import { InvoicePredectionComponent } from './pages/InvoicePredection/InvoicePredection.component';
+import { AmountInformationComponent } from './pages/amount-information/amount-information.component';
+import { SupplierEvaluationComponent } from './pages/supplier-evaluation/supplier-evaluation.component';
+import { SupplierFinancialComponenteya } from './pages/supplier-financial/supplier-financial.component';
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { RegisterComponent } from './register/register.component'; // adjust path if needed
 
 
 @NgModule({
@@ -23,7 +28,8 @@ import { HomeComponent } from './home/home.component';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    MatTooltipModule
+    MatTooltipModule,
+    
     
   ],
   declarations: [
@@ -31,8 +37,14 @@ import { HomeComponent } from './home/home.component';
     AdminLayoutComponent,
     LoginComponent,
     FinancialComponent,
-    SupplierFinancialComponent,
     HomeComponent,
+    InvoicePredectionComponent,
+    AmountInformationComponent,
+    SupplierEvaluationComponent,
+    AdminLayoutComponent,
+    SupplierFinancialComponenteya,
+    SafeUrlPipe,
+    RegisterComponent
 
   ],
   providers: [],

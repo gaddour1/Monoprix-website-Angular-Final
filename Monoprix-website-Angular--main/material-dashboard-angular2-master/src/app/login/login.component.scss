@@ -1,29 +1,143 @@
 :root {
-  --monoprix-red: #E30613;
-  --monoprix-gray-dark: #333333;
-  --monoprix-gray-light: #F5F5F5;
-  --monoprix-white: #FFFFFF;
+  --primary: #e30613;
+  --bg-light: #f9f9f9;
+  --text-dark: #333;
+  --input-border: #ddd;
+  --focus-border: #e30613;
+  --radius: 8px;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-.login-container {
-  min-height: 100vh;
-  background: linear-gradient(135deg, rgba(227,6,19,0.05) 0%, rgba(227,6,19,0.02) 100%);
-  background-image: url('../../assets/background-pattern.svg');
-  background-size: 200px 200px;
-  background-repeat: repeat;
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #fefefe, #f8f8f8);
+}
+
+.login-wrapper {
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
-  gap: 2rem;
-  animation: fadeIn 1s ease-in-out;
+  background: url('../../assets/background-pattern.svg') repeat;
+}
+
+.login-card {
+  background: #fff;
+  padding: 3rem 2.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 450px;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+.login-logo {
+  width: 80px;
+  margin-bottom: 1rem;
+}
+
+.login-title {
+  font-size: 1.8rem;
+  color: red;
+  font-weight: 700;
+}
+
+.login-subtitle {
+  font-size: 1rem;
+  color: var(--text-dark);
+  opacity: 0.7;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .input-wrapper {
+    position: relative;
+
+    i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #aaa;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+      border: 1px solid var(--input-border);
+      border-radius: var(--radius);
+      font-size: 1rem;
+      transition: border-color 0.3s;
+
+      &:focus {
+        outline: none;
+        border-color: var(--focus-border);
+      }
+    }
+  }
+
+  .error {
+    color: var(--primary);
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+  }
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+
+  .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    input {
+      accent-color: var(--primary);
+    }
+  }
+}
+
+.login-btn {
+  background: rgb(237, 74, 74);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+  background: #c40010; // couleur plus sombre manuellement définie
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(227, 6, 19, 0.3);
+}
+
+  &:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(25px);
   }
   to {
     opacity: 1;
@@ -31,177 +145,16 @@
   }
 }
 
-.login-page {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f5f5f5;
-  position: relative;
-
-  .logo-animation {
-}
-
-/* Card */
-.card {
-  border: none;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  max-width: 700px;
-  width: 100%;
-  margin: 0 auto;
-  max-width: 600px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.login-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--monoprix-red);
-  margin-bottom: 1rem;
-  animation: fadeInTitle 1s ease-in-out;
-}
-
-.login-subtitle {
-  font-size: 1.25rem;
-  color: var(--monoprix-gray-dark);
-  margin-bottom: 2rem;
-  animation: fadeInSubtitle 1.2s ease-in-out;
-}
-
-.login-illustration {
-  width: 200px;
-  height: 200px;
-  margin: 0 auto;
-  animation: fadeInIllustration 1.4s ease-in-out;
-}
-
-.login-illustration i {
-  font-size: 100px;
-  color: var(--monoprix-red);
-}
-
-.login-card-wide {
-  width: 600px;
-  max-width: 90%;
-  margin: 0 auto;
-}
-
-
-
-.login-card {
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  background: white;
-  animation: fadeInCard 1.8s ease-in-out;
-}
-
-.card-header {
-  padding: 1.5rem;
-  text-align: center;
-  border-bottom: 1px solid #eee;
-}
-
-.card-header h3 {
-  margin: 0;
-  color: var(--monoprix-gray-dark);
-}
-
-.card-content {
-  padding: 1.5rem;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: var(--monoprix-gray-dark);
-}
-
-.form-group input {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-}
-
-.form-group input:focus {
-  outline: none;
-  border-color: var(--monoprix-red);
-}
-
-.error {
-  color: var(--monoprix-red);
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
-}
-
-.remember-me {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.remember-me input {
-  margin-right: 0.5rem;
-}
-
-.card-actions {
-  padding: 1rem;
-  text-align: center;
-}
-
-.login-button {
-  background: linear-gradient(60deg, #E30613, #B10000);
-  border: none;
-  padding: 1.25rem 3rem;
-  font-size: 1.25rem;
-  font-weight: 600;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
-  min-height: 60px;
-  width: 100%;
-  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(227, 6, 19, 0.4);
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  }
-
-  &:disabled {
-    opacity: 0.65;
-    transform: none;
-    box-shadow: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .login-container {
-    padding: 1rem;
-    gap: 1.5rem;
+@media (max-width: 600px) {
+  .login-card {
+    padding: 2rem 1.5rem;
   }
 
   .login-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .login-subtitle {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
   }
-
-  .login-illustration {
-    width: 150px;
-    height: 150px;
-  }
-
-  .login-illustration i {
-    font-size: 75px;
-  }}}
+}

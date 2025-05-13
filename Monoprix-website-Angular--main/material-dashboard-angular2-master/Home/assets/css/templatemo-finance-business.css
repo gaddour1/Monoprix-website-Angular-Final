@@ -174,7 +174,7 @@ a.border-button:hover {
 /* Sub Header Style */
 
 .sub-header {
-	background-color: #a4c639;
+	background-color: #e82626;
 	height: 46px;
 	line-height: 46px;
 }
@@ -522,7 +522,7 @@ ul.slick-dots {
 /* Request Form */
 
 .request-form {
-	background-color: #a4c639;
+	background-color: #e13838;
 	padding: 40px 0px;
 	color: #fff;
 }

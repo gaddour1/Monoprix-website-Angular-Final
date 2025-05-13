@@ -1,0 +1,206 @@
+:root {
+  --monoprix-red: #e30613;
+  --monoprix-red-dark: #b10000;
+  --monoprix-white: #ffffff;
+  --monoprix-gray: #f5f5f5;
+  --monoprix-gray-dark: #2c2c2c;
+  --monoprix-shadow: rgba(0, 0, 0, 0.15);
+}
+
+/* Supprime la scrollbar globale */
+body, html {
+  overflow: hidden;
+}
+
+/* Sidebar Container */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background: var(--monoprix-red);
+  color: var(--monoprix-white);
+  box-shadow: 4px 0 20px var(--monoprix-shadow);
+  transition: all 0.3s ease, transform 0.5s ease;
+  z-index: 1030;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: fadeIn 0.5s ease-in-out;
+  overflow-y: auto; /* Allow scrolling if content overflows */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--monoprix-white) var(--monoprix-red-dark);
+}
+
+/* Webkit Scrollbar Styling */
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: var(--monoprix-red-dark);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: var(--monoprix-white);
+  border-radius: 4px;
+}
+
+/* Sidebar Wrapper */
+.sidebar-wrapper {
+  padding: 30px 20px;
+  flex-grow: 1;
+}
+
+/* Logo */
+.logo-img {
+  width: 160px;
+  height: auto;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.6));
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);
+}
+
+/* Navigation */
+.nav {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 30px;
+}
+
+.nav-item {
+  margin-bottom: 15px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: var(--monoprix-white);
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 15px;
+  background: transparent;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px var(--monoprix-shadow);
+}
+
+.nav-link:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.nav-link i {
+  font-size: 20px;
+  margin-right: 12px;
+}
+
+/* Active Link */
+.nav-item.active .nav-link,
+.nav-item .nav-link.active {
+  background-color: var(--monoprix-white);
+  color: var(--monoprix-red);
+  font-weight: 600;
+}
+
+.nav-item.active .nav-link i,
+.nav-item .nav-link.active i {
+  color: var(--monoprix-red-dark);
+}
+
+/* Toggle Button for Collapsible Sidebar */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: var(--monoprix-red);
+  color: var(--monoprix-white);
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1040;
+  transition: background 0.3s;
+}
+
+.sidebar-toggle:hover {
+  background: var(--monoprix-red-dark);
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .sidebar {
+    background: var(--monoprix-gray-dark);
+    color: var(--monoprix-gray);
+  }
+
+  .nav-link {
+    color: var(--monoprix-gray);
+  }
+
+  .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .nav-item.active .nav-link,
+  .nav-item .nav-link.active {
+    background-color: var(--monoprix-gray);
+    color: var(--monoprix-red);
+  }
+
+  .sidebar-toggle {
+    background: var(--monoprix-gray-dark);
+    color: var(--monoprix-gray);
+  }
+
+  .sidebar-toggle:hover {
+    background: var(--monoprix-red);
+  }
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .sidebar {
+    width: 260px;
+    transform: translateX(-100%);
+    position: fixed;
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .sidebar-toggle {
+    display: block;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 15px;
+  }
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

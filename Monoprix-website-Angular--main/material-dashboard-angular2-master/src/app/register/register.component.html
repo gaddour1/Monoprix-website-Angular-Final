@@ -1,0 +1,68 @@
+<div class="register-wrapper">
+  <div class="register-card animate__animated animate__fadeInDown">
+    <div class="text-center mb-4">
+      <img src="/assets/img/monoprix-logo.png" alt="Monoprix" class="register-logo" />
+      <h1 class="register-title">Inscription</h1>
+      <p class="register-subtitle">Créez votre compte Monoprix</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <div class="input-wrapper">
+          <i class="fas fa-envelope"></i>
+          <input type="email" formControlName="email" id="email" placeholder="ex: utilisateur@monoprix.tn" />
+        </div>
+        <div class="error" *ngIf="email?.invalid && email?.touched">
+          <small *ngIf="email?.errors?.['required']">Email requis.</small>
+          <small *ngIf="email?.errors?.['email']">Format invalide.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <div class="input-wrapper">
+          <i class="fas fa-lock"></i>
+          <input type="password" formControlName="password" id="password" placeholder="••••••••" />
+        </div>
+        <div class="error" *ngIf="password?.invalid && password?.touched">
+          <small *ngIf="password?.errors?.['required']">Mot de passe requis.</small>
+          <small *ngIf="password?.errors?.['minlength']">Minimum 6 caractères.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirmer le mot de passe</label>
+        <div class="input-wrapper">
+          <i class="fas fa-lock"></i>
+          <input type="password" formControlName="confirmPassword" id="confirmPassword" placeholder="••••••••" />
+        </div>
+        <div class="error" *ngIf="confirmPassword?.invalid && confirmPassword?.touched">
+          <small *ngIf="confirmPassword?.errors?.['required']">Confirmation requise.</small>
+        </div>
+        <div class="error" *ngIf="registerForm.errors?.['mismatch'] && confirmPassword?.touched">
+          <small>Les mots de passe ne correspondent pas.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="role">Rôle</label>
+        <div class="input-wrapper">
+          <i class="fas fa-user-tag"></i>
+          <select formControlName="role" id="role">
+            <option value="" disabled selected>Sélectionner un rôle</option>
+            <option value="DAF">DAF</option>
+            <option value="SUPPLIER_MANAGER">Supplier Manager</option>
+            <option value="RISK_MANAGER">Risk Manager</option>
+          </select>
+        </div>
+        <div class="error" *ngIf="role?.invalid && role?.touched">
+          <small>Rôle requis.</small>
+        </div>
+      </div>
+
+      <button type="submit" class="register-btn" [disabled]="!registerForm.valid">S'inscrire</button>
+      <button type="button" class="back-btn" (click)="goToLogin()">Retour au login</button>
+    </form>
+  </div>
+</div>
