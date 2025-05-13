@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -63,19 +64,19 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('role', 'DAF');
         this.router.navigate(['/financial']);
       } else if (email === 'supplier@supplier.tn' && password === 'supplier123') {
-        localStorage.setItem('role', 'SUPPLIER');
+        localStorage.setItem('role', 'SUPPLIER_MANAGER'); // Updated to match SidebarComponent
         this.router.navigate(['/financial']);
       } else if (email === 'risk@risk.tn' && password === 'risk123') {
-        localStorage.setItem('role', 'DEFAULT');
+        localStorage.setItem('role', 'RISK_MANAGER'); // Updated to match SidebarComponent
         this.router.navigate(['/financial']);
       } else {
         // Vérifier les comptes enregistrés dans localStorage
         let found = false;
-        for (let i = 0; i < localStorage.length; i++) {
+        for (let i = 0; i <localStorage.length; i++) {
           const key = localStorage.key(i);
           if (key && key.startsWith('email_')) {
             const storedEmail = localStorage.getItem(key);
-            const userId = key.split('_')[1]; // Récupérer l'identifiant unique
+            const userId = key.split('_')[1];
             const storedPassword = localStorage.getItem(`password_${userId}`);
             const storedRole = localStorage.getItem(`role_${userId}`);
 

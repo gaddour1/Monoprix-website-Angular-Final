@@ -1,10 +1,10 @@
+
 <div class="wrapper">
   <app-sidebar></app-sidebar>
 
   <div class="main-content">
-
     <!-- Header -->
-    <div class="dashboard-header">
+    <div class="dashboard-header" role="banner" aria-label="Dashboard header">
       <div class="waves-bg">
         <div class="wave"></div>
         <div class="wave"></div>
@@ -13,21 +13,23 @@
       <div class="header-content">
         <div class="header-title">
           <h1 *ngIf="role === 'DAF'">Tableau de décision DAF</h1>
-          <h1 *ngIf="role === 'SUPPLIER'">Tableau de bord Fournisseur</h1>
-          <h1 *ngIf="role === 'DEFAULT'">Dashboard Général</h1>
+          <h1 *ngIf="role === 'SUPPLIER_MANAGER'">Tableau de décision Supplier Manager</h1>
+          <h1 *ngIf="role === 'RISK_MANAGER'">Tableau de décision Risk Manager</h1>
+          <h1 *ngIf="role !== 'DAF' && role !== 'SUPPLIER_MANAGER' && role !== 'RISK_MANAGER'">Tableau de décision par défaut</h1>
           <p class="subtitle">Bienvenue sur votre tableau de bord personnalisé</p>
         </div>
       </div>
     </div>
 
     <!-- Power BI iframe -->
-    <div class="powerbi-wrapper">
-     <iframe *ngIf="dashboardUrl"
+    <div class="powerbi-wrapper" role="region" aria-label="Power BI dashboard">
+      <iframe
+        *ngIf="dashboardUrl"
         [src]="dashboardUrl | safeUrl"
         frameborder="0"
-        allowFullScreen="true">
-</iframe>
-
+        allowfullscreen="true"
+        title="Power BI Dashboard">
+      </iframe>
     </div>
   </div>
 </div>

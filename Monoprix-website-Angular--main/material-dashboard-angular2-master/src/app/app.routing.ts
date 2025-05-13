@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'invoice-predection', component: InvoicePredectionComponent },
   { path: 'amount-information', component: AmountInformationComponent },
   { path: 'supplier-evaluation', component: SupplierEvaluationComponent },
-  { path: 'supplier-clustring', component: SupplierEvaluationComponent },
+  { path: 'supplier-clustring', component: SupplierFinancialComponenteya },
   { path: 'register', component: RegisterComponent },
   // Optional fallback
   { path: '**', redirectTo: 'home' }

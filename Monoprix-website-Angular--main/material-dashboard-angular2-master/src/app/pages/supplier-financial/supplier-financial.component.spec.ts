@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SupplierFinancialComponent } from './supplier-financial.component';
+import { SupplierFinancialComponenteya } from './supplier-financial.component';
 
-describe('SupplierFinancialComponent', () => {
-  let component: SupplierFinancialComponent;
-  let fixture: ComponentFixture<SupplierFinancialComponent>;
+describe('SupplierFinancialComponenteya', () => {
+  let component: SupplierFinancialComponenteya;
+  let fixture: ComponentFixture<SupplierFinancialComponenteya>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SupplierFinancialComponent ]
+      declarations: [ SupplierFinancialComponenteya ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SupplierFinancialComponent);
+    fixture = TestBed.createComponent(SupplierFinancialComponenteya);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
