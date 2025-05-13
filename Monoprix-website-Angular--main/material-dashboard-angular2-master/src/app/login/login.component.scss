@@ -40,7 +40,7 @@ body, html {
 
 .login-title {
   font-size: 1.8rem;
-  color: red;
+  color:  #c40010;
   font-weight: 700;
 }
 
@@ -156,5 +156,65 @@ body, html {
 
   .login-subtitle {
     font-size: 0.95rem;
+  }
+}
+.register-btn {
+  background: transparent;
+  color: #333;
+  border: 2px solid  #c40010;
+  border-radius: var(--radius);
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin-top: 1rem; /* Adds spacing if placed below login-btn */
+
+  /* Ripple effect on click */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(227, 6, 19, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: 0;
+  }
+
+  &:hover {
+    background: #c40010; //
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(227, 6, 19, 0.3);
+  }
+
+  &:active::after {
+    width: 200%;
+    height: 200%;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.2);
+  }
+
+  &:disabled {
+    border-color: #ccc;
+    color: #ccc;
+    cursor: not-allowed;
+    background: transparent;
+  }
+
+  /* Ensure text is above ripple effect */
+  span {
+    position: relative;
+    z-index: 1;
   }
 }
